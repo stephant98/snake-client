@@ -8,9 +8,17 @@ const connect = function() {
     port: 50541
   });
 
+  conn.on('connect', () => {
+    console.log("Successfully connected to game server");
+    conn.write('Name: SET');
+  })
+
+  
+
   conn.on('data', (data) => {
     console.log(data);
   })
+
   
   
   // interpret incoming data as text
