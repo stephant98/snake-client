@@ -7,11 +7,15 @@ const connect = function() {
     host: 'localhost',
     port: 50541
   });
-
+  
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
     conn.write('Name: SET');
+    //conn.write('Move: up')
+    
   })
+
+  
 
   
 
