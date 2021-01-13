@@ -4,6 +4,7 @@
  */
 let connection;
 
+
 const handleUserInput = (key) => {
   if (key === '\u0003') {
     process.exit();
@@ -15,13 +16,15 @@ const handleUserInput = (key) => {
     connection.write('Move: down')
   } else if(key === 'd'){
     connection.write('Move: right')
+  } else if (key === 'h'){
+    connection.write('Say: hello')
   }
 }
 
 const setupInput = function(conn) {
   connection = conn
   const stdin = process.stdin;
-  stdin.on('data', handleUserInput)
+  stdin.on('data',(keyData) =>  handleUserInput(keyData) )
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
   stdin.resume();
